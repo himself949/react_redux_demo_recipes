@@ -1,14 +1,27 @@
 import AllRecipes from '../features/allRecipes/allRecipes';
+import FavoriteRecipes from '../features/favouriteRecipes/FavouriteRecipes';
 import { getFilteredRecipes } from '../helpers/getFiltered'
 import './App.css';
 
 function App({ state, dispatch }) {
 
-
   const visibleAllRecipes = getFilteredRecipes(state.allRecipes, state.searchTerm);
+  const visibleFavoriteRecipes = getFilteredRecipes(state.favoriteRecipes, state.searchTerm);
 
   return (
     <main>
+
+      <section>
+        <h2>Favorite Recipes</h2>
+        <FavoriteRecipes
+          favoriteRecipes={visibleFavoriteRecipes}
+          dispatch={dispatch}
+        />
+      </section>
+
+      <hr />
+
+      <section></section>
       <section>
         <h2>All Recipes</h2>
         <AllRecipes

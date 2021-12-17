@@ -24,6 +24,7 @@ const AllRecipes = ({ allRecipes, dispatch }) => {
                     <FavouriteButton
                         onClickHandler={() => onAddRecipeHandler(recipe)}
                         icon={favoriteIconURL}
+                        text="Add to Favorites"
                     />
                 </Recipe>
             ))}
