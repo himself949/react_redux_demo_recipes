@@ -2,8 +2,6 @@ import React from 'react';
 
 const Recipe = ({ recipe, children }) => {
 
-
-
     return (
         <div key={recipe.id} className="recipe" tabIndex={0}>
             <span className="recipe-container">

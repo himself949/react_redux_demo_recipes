@@ -1,5 +1,6 @@
 import AllRecipes from '../features/allRecipes/allRecipes';
 import FavoriteRecipes from '../features/favouriteRecipes/FavouriteRecipes';
+import SearchTerm from '../features/searchTerm/SearchTerm';
 import { getFilteredRecipes } from '../helpers/getFiltered'
 import './App.css';
 
@@ -10,6 +11,13 @@ function App({ state, dispatch }) {
 
   return (
     <main>
+
+      <section>
+        <SearchTerm
+          searchTerm={state.searchTerm}
+          dispatch={dispatch}
+        />
+      </section>
 
       <section>
         <h2>Favorite Recipes</h2>
