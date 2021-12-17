@@ -11,14 +11,12 @@ function App({ state, dispatch }) {
 
   return (
     <main>
-
       <section>
         <SearchTerm
           searchTerm={state.searchTerm}
           dispatch={dispatch}
         />
       </section>
-
       <section>
         <h2>Favorite Recipes</h2>
         <FavoriteRecipes
@@ -26,9 +24,7 @@ function App({ state, dispatch }) {
           dispatch={dispatch}
         />
       </section>
-
       <hr />
-
       <section></section>
       <section>
         <h2>All Recipes</h2>
