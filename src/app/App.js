@@ -21,8 +21,3 @@ function App({ state, dispatch }) {
 }
 
 export default App;
-
-/*
-
-          
-*/
