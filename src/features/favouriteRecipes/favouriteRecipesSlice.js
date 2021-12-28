@@ -1,25 +1,38 @@
+import { selectSearchTerm } from '../searchTerm/searchTermSlice.js';
+
 const initialState = [];
-export const favoriteRecipesReducer = (favoriteRecipes = initialState, action) => {
+export const favouriteRecipesReducer = (favouriteRecipes = initialState, action) => {
     switch (action.type) {
-        case 'favoriteRecipes/addRecipe':
-            return [...favoriteRecipes, action.payload]
-        case 'favoriteRecipes/removeRecipe':
-            return favoriteRecipes.filter(recipe => recipe.id !== action.payload.id)
+        case 'favouriteRecipes/addRecipe':
+            return [...favouriteRecipes, action.payload]
+        case 'favouriteRecipes/removeRecipe':
+            return favouriteRecipes.filter(recipe => recipe.id !== action.payload.id)
         default:
-            return favoriteRecipes;
+            return favouriteRecipes;
     }
 }
 
 export function addRecipe(recipe) {
     return {
-        type: 'favoriteRecipes/addRecipe',
+        type: 'favouriteRecipes/addRecipe',
         payload: recipe
     }
 }
 
 export function removeRecipe(recipe) {
     return {
-        type: 'favoriteRecipes/removeRecipe',
+        type: 'favouriteRecipes/removeRecipe',
         payload: recipe
     }
 }
+
+export const selectFavouriteRecipes = (state) => state.favouriteRecipes;
+
+export const selectFilteredFavouriteRecipes = (state) => {
+    const favouriteRecipes = selectFavouriteRecipes(state);
+    const searchTerm = selectSearchTerm(state);
+
+    return favouriteRecipes.filter((recipe) =>
+        recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+};

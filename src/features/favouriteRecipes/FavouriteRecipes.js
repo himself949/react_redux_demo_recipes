@@ -1,11 +1,15 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import FavouriteButton from '../../components/FavouriteButton';
 import Recipe from '../../components/Recipe,';
-import { removeRecipe } from './favouriteRecipesSlice'
+import { removeRecipe, selectFilteredFavouriteRecipes } from './favouriteRecipesSlice'
 
-const unfavoriteIconUrl = 'https://static-assets.codecademy.com/Courses/Learn-Redux/Recipes-App/icons/unfavorite.svg'
+const unfavouriteIconUrl = 'https://static-assets.codecademy.com/Courses/Learn-Redux/Recipes-App/icons/unfavorite.svg'
 
-const FavoriteRecipes = ({ favoriteRecipes, dispatch }) => {
+const FavoriteRecipes = () => {
+
+    const favouriteRecipes = useSelector(selectFilteredFavouriteRecipes);
+    const dispatch = useDispatch();
 
     const onRemoveRecipeHandler = (recipe) => {
         dispatch(removeRecipe(recipe));
@@ -13,11 +17,11 @@ const FavoriteRecipes = ({ favoriteRecipes, dispatch }) => {
 
     return (
         <div className="recipes-container">
-            {favoriteRecipes.map((recipe) => (
+            {favouriteRecipes.map((recipe) => (
                 <Recipe recipe={recipe} key={recipe.id}>
                     <FavouriteButton
                         onClickHandler={() => onRemoveRecipeHandler(recipe)}
-                        icon={unfavoriteIconUrl}
+                        icon={unfavouriteIconUrl}
                         text="Remove Favourite"
                     />
                 </Recipe>

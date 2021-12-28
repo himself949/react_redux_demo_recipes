@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+
 import FavouriteButton from '../../components/FavouriteButton';
 import Recipe from '../../components/Recipe,';
-import { loadData } from './allRecipesSlice';
+import { loadData, selectFilteredAllRecipes } from './allRecipesSlice';
 import { addRecipe } from '../favouriteRecipes/favouriteRecipesSlice';
 
 const favoriteIconURL = 'https://static-assets.codecademy.com/Courses/Learn-Redux/Recipes-App/icons/favorite.svg'
 
-const AllRecipes = ({ allRecipes, dispatch }) => {
+const AllRecipes = () => {
+
+    const allRecipes = useSelector(selectFilteredAllRecipes)
+    const dispatch = useDispatch()
 
     const onFirstRender = () => {
         dispatch(loadData());
